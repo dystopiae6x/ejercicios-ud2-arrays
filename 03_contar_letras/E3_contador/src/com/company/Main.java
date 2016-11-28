@@ -7,13 +7,15 @@ import java.io.InputStreamReader;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-	// write your code here
+	// Fal que no sume C si hay una CH, L si hay LL, etc. Ademas de separarlo a funcion.
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        //String[] letras = new String[27];
+        //Primer array (de 27), que tiene todas las letras
         String[] letras = {"A", "B", "C", "CH", "D", "F", "G", "H", "I", "J", "K", "L", "LL", "M",
         "N", "Ñ", "O", "P", "Q", "R", "RR", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
+        //Segundo array, que tiene tambien 27 char y que suma +1 cuando el caracter del String introducido
+        // coincide con el de arriba.
         int[] contadorLetras = new int[27];
 
         //establecer todos valores a 0, por si acaso
