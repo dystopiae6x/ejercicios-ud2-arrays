@@ -30,9 +30,10 @@ public class Main {
                 System.out.format("%4d", matriz[i][j]);
             }
             System.out.println();
-
         }
 
+        //System.out.format requiere la indicacion del formato: La d es de digit. El 4 es una anchura de 4 caracteres.
+        // El System.out.println(); mete un salto de linea cada 3 vueltas.
 
     }
 }
