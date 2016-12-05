@@ -10,11 +10,17 @@ public class Main {
         System.out.println("Tablero: ");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                /*switch (tablero[i][j]){
-
-
-                }*/
-                System.out.format("%2d", tablero[i][j]);
+                switch (tablero[i][j]) {
+                    case 0:
+                        System.out.print(" o ");
+                        break;
+                    case 1:
+                        System.out.print(" x ");
+                        break;
+                    case 5:
+                        System.out.print(" . ");
+                        break;
+                }
             }
             System.out.println("");
         }
@@ -28,7 +34,11 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-	// write your code here
+
+
+        // PROBLEMAS: Suma siempre turno y no verifica si las casillas estan ocupadas. El enunciado no pedia verificacion.
+        // Falta visualizar ganador despues del turno del jugador 2
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         // Diseñamos el tablero: matriz 3x3
@@ -49,7 +59,10 @@ public class Main {
         // Insertar datos
         byte ganador1=0,ganador2=0, empate=0, turno=0;
         while (ganador1==0 && ganador2==0 && empate==0) {
-            System.out.println("\nTurno de jugador 1, elija casilla: ");
+            turno +=1;
+            System.out.println("Turno: " +turno);
+
+            System.out.println("\nJugador 1, elija casilla: ");
             System.out.println("1 2 3\n4 5 6\n7 8 9");
             int jugador1 = Integer.parseInt(br.readLine());
 
@@ -100,12 +113,16 @@ public class Main {
             if (tablero[0][0]==1 && tablero[1][1]==1 && tablero[2][2]==1) {ganador2=1;}
             if (tablero[2][0]==1 && tablero[1][1]==1 && tablero[0][2]==1) {ganador2=1;}
 
-            turno +=1; if (turno==9) {empate=1;}
+           if (turno==9) {empate=1;}
 
 
 
             if (ganador1==0 && ganador2==0 && empate==0) {
-                System.out.println("\nTurno de jugador 2, elija casilla: ");
+
+                turno +=1;
+                System.out.println("Turno: " +turno);
+
+                System.out.println("\nJugador 2, elija casilla: ");
                 System.out.println("1 2 3\n4 5 6\n7 8 9");
                 int jugador2 = Integer.parseInt(br.readLine());
 
@@ -142,21 +159,22 @@ public class Main {
                 }
 
                 visualizarTablero(tablero);
+
+                // Visualizar ganador de nuevo iria aqui <-
+
             } else {break;}
 
-
-            if (ganador1==1){
-                System.out.println("¡Ha ganado el jugador 1!");
-            } else if (ganador2==2) {
-                System.out.println("¡Ha ganado el jugador 2!");
-            } else {
-                System.out.println("Habeis empatado");
-            }
-
-
-
-
         }
+
+
+        if (ganador1==1){
+            System.out.println("¡Has ganado  jugador 1!");
+        } else if (ganador2==2) {
+            System.out.println("¡Has ganado jugador 2!");
+        } else {
+            System.out.println("Habeis empatado");
+        }
+
 
     }
 }
